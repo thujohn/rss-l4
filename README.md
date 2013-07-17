@@ -41,7 +41,7 @@ Returns the feed
 		$response = Response::make($feed, 200);
 		$response->header('Content-Type', 'application/rss+xml');
 
-	    	return $response;
+		return $response;
 	});
 
 Save the feed
