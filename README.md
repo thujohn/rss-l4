@@ -38,7 +38,10 @@ Returns the feed
 			$feed->item(array('title' => 'Item '.$i, 'description' => 'Description '.$i, 'link' => 'http://www.test.com/article-'.$i));
 		}
 
-		return $feed;
+		$response = Response::make($feed, 200);
+		$response->header('Content-Type', 'application/rss+xml');
+
+	    	return $response;
 	});
 
 Save the feed
