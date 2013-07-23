@@ -7,6 +7,7 @@ class Rss{
 	protected $encoding = '';
 	protected $channel = array();
 	protected $items = array();
+	protected $limit = 0;
 
 	public function feed($version, $encoding){
 		$this->version = $version;
@@ -66,6 +67,13 @@ class Rss{
 		$this->items[] = $parameters;
 		return $this;
 	}
+	
+	public function limit($limit) {
+		if(is_int($limit) and $limit > 0) {
+			$this->limit = $limit;
+		}
+		return $this;
+	}
 
 	public function render(){
 		$xml = new \SimpleXMLElement('<rss version="'.$this->version.'" encoding="'.$this->encoding.'"></rss>');
@@ -75,7 +83,8 @@ class Rss{
 			$xml->channel->addChild($kC, $vC);
 		}
 
-		foreach ($this->items as $item){
+		$items = $this->limit > 0 ? array_slice($this->items, 0, $this->limit) : $this->items;
+		foreach ($items as $item){
 			$elem_item = $xml->channel->addChild('item');
 			foreach ($item as $kI => $vI){
 				$elem_item->addChild($kI, $vI);
