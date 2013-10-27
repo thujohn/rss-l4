@@ -87,7 +87,13 @@ class Rss{
 		foreach ($items as $item){
 			$elem_item = $xml->channel->addChild('item');
 			foreach ($item as $kI => $vI){
-				$elem_item->addCdataChild($kI, $vI);
+				$options = explode('|', $kI);
+
+				if (in_array('cdata', $options)){
+					$elem_item->addCdataChild($options[0], $vI);
+				}else{
+					$elem_item->addChild($options[0], $vI);
+				}
 			}
 		}
 

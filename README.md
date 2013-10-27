@@ -35,7 +35,7 @@ Returns the feed
 		$feed = Rss::feed('2.0', 'UTF-8');
 		$feed->channel(array('title' => 'Channel\'s title', 'description' => 'Channel\'s description', 'link' => 'http://www.test.com/'));
 		for ($i=1; $i<=5; $i++){
-			$feed->item(array('title' => 'Item '.$i, 'description' => 'Description '.$i, 'link' => 'http://www.test.com/article-'.$i));
+			$feed->item(array('title' => 'Item '.$i, 'description|cdata' => 'Description '.$i, 'link' => 'http://www.test.com/article-'.$i));
 		}
 
 		return Response::make($feed, 200, array('Content-Type' => 'text/xml'));
@@ -48,7 +48,7 @@ Save the feed
 		$feed = Rss::feed('2.0', 'UTF-8');
 		$feed->channel(array('title' => 'Channel\'s title', 'description' => 'Channel\'s description', 'link' => 'http://www.test.com/'));
 		for ($i=1; $i<=5; $i++){
-			$feed->item(array('title' => 'Item '.$i, 'description' => 'Description '.$i, 'link' => 'http://www.test.com/article-'.$i));
+			$feed->item(array('title' => 'Item '.$i, 'description|cdata' => 'Description '.$i, 'link' => 'http://www.test.com/article-'.$i));
 		}
 
 		$feed->save('test.xml');
