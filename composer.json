@@ -3,7 +3,6 @@
     "description": "RSS builder for Laravel 4",
 	"keywords": ["rss", "laravel", "laravel4"],
     "license": "MIT",
-    "version": "1.0.0",
     "authors": [
         {
             "name": "thujohn",
@@ -18,6 +17,5 @@
         "psr-0": {
             "Thujohn\\Rss": "src/"
         }
-    },
-    "minimum-stability": "dev"
+    }
 }
