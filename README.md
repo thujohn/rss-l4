@@ -9,7 +9,7 @@ RSS builder for Laravel 4
 
 Add `thujohn/rss` to `composer.json`.
 
-    "thujohn/rss": "dev-master"
+    "thujohn/rss": "~1.0"
     
 Run `composer update` to pull down the latest version of RSS.
 
